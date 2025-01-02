@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-b2bw3v$0ezfu4orif7xy_8*lpw)(ms#35n^se4zc4g+nse7!29
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['social_app.onrender.com','social-app.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,10 +75,21 @@ WSGI_APPLICATION = "social_app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db',
+        'USER': 'django_user',
+        'PASSWORD': 'django_password',
+        'HOST': 'db',  # matches service name in docker-compose.yml
+        'PORT': '5432',
     }
 }
 
